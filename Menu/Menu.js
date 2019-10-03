@@ -56,7 +56,7 @@ function menuComponent (array) {
   console.log(menuDiv);
 
   function expandMenu() {
-    console.log('Hola')
+    console.log('Mucho gusto, menu.')
 
     // toggle the class 'menu--open' on the menu
     menuDiv.classList.value.includes('menu--open') ? menuDiv.classList.remove('menu--open') : menuDiv.classList.add('menu--open');
