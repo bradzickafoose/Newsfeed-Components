@@ -85,6 +85,17 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Me gusta Corona con limón.',
+    date: 'Oct 1st, 2019',
+    firstParagraph: `Me gustaría que me tocase la lotería para irme de vacaciones. Vamos a mi casa beber la cerveza.`,
+
+    secondParagraph: `Vamos a mi casa beber la cerveza.`,
+
+    thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+    Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+    Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
 ];
 
@@ -144,20 +155,22 @@ function componentConstructor(obj) {
   p3.textContent = obj.thirdParagraph;
   expandButton.textContent = 'Click to expand';
 
-  
+  // toggle the class 'article-open' on the 'article' div.
   function expandToggle() {
     articleDiv.classList.value.includes('article-open') ? articleDiv.classList.remove('article-open') : articleDiv.classList.add('article-open');
     console.log(articleDiv.classList);
   }
 
+  // add an event listener to the expandButton span. 
   expandButton.addEventListener('click', expandToggle);
   console.log(articleDiv.classList);
+
+  // return the entire component
   return articleDiv;
 }
 
-
+// Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
 const articles = document.querySelector('.articles');
-
 
 data.forEach((element) => {
   articles.appendChild(componentConstructor(element));
