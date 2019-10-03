@@ -112,3 +112,53 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+function componentConstructor(obj) {
+  // define new elements
+  const articleDiv = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  const p1 = document.createElement('p');
+  const p2 = document.createElement('p');
+  const p3 = document.createElement('p');
+  const expandButton = document.createElement('span');
+
+  // Set structure of elements
+  articleDiv.appendChild(articleTitle);
+  articleDiv.appendChild(articleDate);
+  articleDiv.appendChild(p1);
+  articleDiv.appendChild(p2);
+  articleDiv.appendChild(p3);
+  articleDiv.appendChild(expandButton);
+
+  // Set class names
+  articleDiv.classList.add('article');
+  articleDate.classList.add('date');
+  expandButton.classList.add('expandButton');
+
+  // Set text content
+  articleTitle.textContent = obj.title;
+  articleDate.textContent = obj.date;
+  p1.textContent = obj.firstParagraph;
+  p2.textContent = obj.secondParagraph;
+  p3.textContent = obj.thirdParagraph;
+  expandButton.textContent = 'Click to expand';
+
+  
+  function expandToggle() {
+    articleDiv.classList.value.includes('article-open') ? articleDiv.classList.remove('article-open') : articleDiv.classList.add('article-open');
+    console.log(articleDiv.classList);
+  }
+
+  expandButton.addEventListener('click', expandToggle);
+  console.log(articleDiv.classList);
+  return articleDiv;
+}
+
+
+const articles = document.querySelector('.articles');
+
+
+data.forEach((element) => {
+  articles.appendChild(componentConstructor(element));
+})
