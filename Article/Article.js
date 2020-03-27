@@ -85,6 +85,17 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Me gusta Corona con limón.',
+    date: 'Oct 1st, 2019',
+    firstParagraph: `Me gustaría que me tocase la lotería para irme de vacaciones. Vamos a mi casa beber la cerveza.`,
+
+    secondParagraph: `Vamos a mi casa beber la cerveza.`,
+
+    thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+    Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+    Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
 ];
 
@@ -112,3 +123,55 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+function componentConstructor(obj) {
+  // define new elements
+  const articleDiv = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  const p1 = document.createElement('p');
+  const p2 = document.createElement('p');
+  const p3 = document.createElement('p');
+  const expandButton = document.createElement('span');
+
+  // Set structure of elements
+  articleDiv.appendChild(articleTitle);
+  articleDiv.appendChild(articleDate);
+  articleDiv.appendChild(p1);
+  articleDiv.appendChild(p2);
+  articleDiv.appendChild(p3);
+  articleDiv.appendChild(expandButton);
+
+  // Set class names
+  articleDiv.classList.add('article');
+  articleDate.classList.add('date');
+  expandButton.classList.add('expandButton');
+
+  // Set text content
+  articleTitle.textContent = obj.title;
+  articleDate.textContent = obj.date;
+  p1.textContent = obj.firstParagraph;
+  p2.textContent = obj.secondParagraph;
+  p3.textContent = obj.thirdParagraph;
+  expandButton.textContent = 'Click to expand';
+
+  // toggle the class 'article-open' on the 'article' div.
+  function expandToggle() {
+    articleDiv.classList.value.includes('article-open') ? articleDiv.classList.remove('article-open') : articleDiv.classList.add('article-open');
+    console.log(articleDiv.classList);
+  }
+
+  // add an event listener to the expandButton span. 
+  expandButton.addEventListener('click', expandToggle);
+  console.log(articleDiv.classList);
+
+  // return the entire component
+  return articleDiv;
+}
+
+// Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
+const articles = document.querySelector('.articles');
+
+data.forEach((element) => {
+  articles.appendChild(componentConstructor(element));
+})
