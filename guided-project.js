@@ -76,6 +76,7 @@ const panelData = [
     buttonClose.classList.add('panel-btn-close', 'hide-btn')
     panelContent.classList.add('panel-content')
     
+    // For button arrows: https://graphemica.com/▼
     const open = '\u25bc';
     const close = '\u25b2';
     // set text content
